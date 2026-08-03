@@ -1,0 +1,111 @@
+[
+  {
+    "id": "science-city",
+    "chain": "Government of Gujarat",
+    "venue": "Science City",
+    "auditorium": "IMAX GT",
+    "badges": [
+      "imax"
+    ],
+    "screenSize": "96 × 67 ft",
+    "aspectRatio": "1.43:1",
+    "projection": "IMAX 15/70 Film",
+    "projectionDesc": "(IMAX GT) The gold standard of analog projection.",
+    "audio": "IMAX 6 Track",
+    "audioDesc": "Proprietary sub-bass and precision-aligned point-source speakers.",
+    "seating": "651",
+    "type": "Purpose-built IMAX",
+    "isCurved": true,
+    "ratings": {
+      "visual": "10.0",
+      "audio": "9.8",
+      "thirdLabel": "IMMERSION",
+      "thirdScore": "10.0",
+      "overall": "9.9"
+    },
+    "certification": "REFERENCE SCREEN",
+    "colorTheme": "blue"
+  },
+  {
+    "id": "prasads",
+    "chain": "Prasads Multiplex",
+    "venue": "NTR Gardens",
+    "auditorium": "PCX",
+    "badges": [
+      "premium",
+      "dolby"
+    ],
+    "screenSize": "98.6 × 46 ft",
+    "aspectRatio": "1.85:1",
+    "projection": "Dual Barco DP4K-60L",
+    "projectionDesc": "RGB Laser delivering 60,000 lumens of absolute brilliance.",
+    "audio": "Dolby Atmos",
+    "audioDesc": "Floor-to-ceiling spatial audio array with zero-decibel noise floor isolation.",
+    "seating": "Approx. 630",
+    "type": "Premium Large Format",
+    "isCurved": true,
+    "ratings": {
+      "visual": "10.0",
+      "audio": "9.8",
+      "thirdLabel": "COMFORT",
+      "thirdScore": "9.4",
+      "overall": "9.8"
+    },
+    "certification": "REFERENCE PREMIUM",
+    "colorTheme": "red"
+  },
+  {
+    "id": "wadala",
+    "chain": "Miraj Cinemas",
+    "venue": "Wadala",
+    "auditorium": "IMAX",
+    "badges": [
+      "imax"
+    ],
+    "screenSize": "72 × 41 ft",
+    "aspectRatio": "1.90:1",
+    "projection": "IMAX XT Laser 4K",
+    "projectionDesc": "Next-generation laser projection for incredibly sharp, bright images.",
+    "audio": "IMAX Sound",
+    "audioDesc": "Next-generation 12-channel immersive sound system.",
+    "seating": "N/A",
+    "type": "Commercial IMAX",
+    "isCurved": false,
+    "ratings": {
+      "visual": "9.8",
+      "audio": "9.6",
+      "thirdLabel": "COMFORT",
+      "thirdScore": "9.5",
+      "overall": "9.7"
+    },
+    "certification": "ELITE",
+    "colorTheme": "blue"
+  },
+  {
+    "id": "pvr-eva-audi-3",
+    "chain": "PVR INOX",
+    "venue": "EVA Mall, Vadodara",
+    "auditorium": "Audi 3",
+    "badges": [
+      "dolby-atmos"
+    ],
+    "screenSize": "Unknown",
+    "aspectRatio": "2.39:1 (Estimated Scope Screen)",
+    "projection": "Digital 2K Xenon",
+    "projectionDesc": "Standard digital cinema projection. No public evidence of laser projection in Audi 3.",
+    "audio": "Dolby Atmos",
+    "audioDesc": "Object-based immersive surround sound with overhead speakers.",
+    "seating": "230",
+    "type": "Premium Auditorium",
+    "isCurved": false,
+    "ratings": {
+      "visual": "8.9",
+      "audio": "9.4",
+      "thirdLabel": "COMFORT",
+      "thirdScore": "9.1",
+      "overall": "9.2"
+    },
+    "certification": "DOLBY ATMOS",
+    "colorTheme": "purple"
+  }
+]
