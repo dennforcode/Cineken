@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { FormatBadge } from "./FormatBadge";
 import "../app/cinema/cinema.css";
@@ -29,11 +30,13 @@ export type ScreenData = {
   certification: string;
   colorTheme: string;
   isCurved?: boolean;
+  photoUrl?: string;
 };
 
 import { SectionConfig } from "@/data/layouts";
 
 export default function CinemaComponent({ screen, layoutSections }: { screen: ScreenData, layoutSections: SectionConfig[] }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const isBlue = screen.colorTheme === "blue";
   const accentColor = isBlue ? "#0055FF" : "#E50914";
   const glowClass = isBlue ? "bg-[#0055FF]" : "bg-[#E50914]";
@@ -88,6 +91,22 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
 
       <main className="max-w-[1400px] mx-auto px-4 md:px-8 py-16 space-y-32">
         <div className="space-y-6">
+          {/* Hero Image */}
+          {screen.photoUrl && (
+            <div 
+              className="w-full h-[40vh] sm:h-[50vh] md:h-[60vh] rounded-3xl overflow-hidden relative shadow-2xl border border-cine-border group cursor-pointer"
+              onClick={() => setIsModalOpen(true)}
+            >
+              <img 
+                src={screen.photoUrl} 
+                alt={`${screen.auditorium} at ${screen.venue}`} 
+                className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-cine-surface via-transparent to-transparent opacity-60"></div>
+              <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl"></div>
+            </div>
+          )}
+
           {/* Hierarchy Matrix: Chain, Venue, Audi */}
           <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="grid grid-cols-2 gap-6">
@@ -440,6 +459,26 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
           </div>
         </section>
       </main>
+      {/* Full-Screen Image Modal */}
+      {isModalOpen && screen.photoUrl && (
+        <div 
+          className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out animate-in fade-in duration-300"
+          onClick={() => setIsModalOpen(false)}
+        >
+          <img 
+            src={screen.photoUrl} 
+            alt={`${screen.auditorium} at ${screen.venue}`} 
+            className="max-w-full max-h-full rounded-lg object-contain shadow-2xl ring-1 ring-white/20 animate-in zoom-in-95 duration-300"
+          />
+          
+          <button 
+            className="absolute top-6 right-6 w-12 h-12 flex items-center justify-center rounded-full bg-black/50 text-white hover:bg-white hover:text-black transition-colors duration-300 border border-white/20"
+            onClick={(e) => { e.stopPropagation(); setIsModalOpen(false); }}
+          >
+            ✕
+          </button>
+        </div>
+      )}
     </div>
   );
 }

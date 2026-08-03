@@ -16,6 +16,7 @@
     "seating": "651",
     "type": "Purpose-built IMAX",
     "isCurved": true,
+    "photoUrl": "/cinemas/imax_GT.png",
     "ratings": {
       "visual": "10.0",
       "audio": "9.8",
@@ -44,6 +45,7 @@
     "seating": "Approx. 630",
     "type": "Premium Large Format",
     "isCurved": true,
+    "photoUrl": "/cinemas/prasad_pcx.png",
     "ratings": {
       "visual": "10.0",
       "audio": "9.8",
@@ -71,6 +73,7 @@
     "seating": "N/A",
     "type": "Commercial IMAX",
     "isCurved": false,
+    "photoUrl": "/cinemas/imax_wadala.png",
     "ratings": {
       "visual": "9.8",
       "audio": "9.6",
@@ -98,6 +101,7 @@
     "seating": "230",
     "type": "Premium Auditorium",
     "isCurved": false,
+    "photoUrl": "/cinemas/PVR_EVA.png",
     "ratings": {
       "visual": "8.9",
       "audio": "9.4",
