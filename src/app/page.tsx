@@ -6,7 +6,7 @@ import "./cinema/cinema.css";
 
 export default function Home() {
   return (
-    <div className="premium-body selection:bg-cine-accent selection:text-white min-h-screen relative overflow-hidden">
+    <div className="premium-body selection:bg-cine-accent selection:text-white min-h-screen relative overflow-x-hidden flex flex-col">
 
       {/* Header with Theme Toggle */}
       <header className="absolute top-0 right-0 p-6 md:p-8 z-50">
@@ -18,7 +18,7 @@ export default function Home() {
       <div className="absolute bottom-0 right-1/4 w-[600px] h-[400px] bg-cine-accent/5 rounded-full blur-[150px] pointer-events-none"></div>
 
       {/* Introduction Section */}
-      <section className="px-6 md:px-12 py-24 min-h-screen flex flex-col justify-center relative z-10">
+      <section className="px-6 md:px-12 py-24 flex-grow flex flex-col justify-center relative z-10">
         <div className="max-w-5xl mx-auto w-full">
 
           <h1 className="font-display text-5xl sm:text-7xl md:text-[6rem] leading-[1.1] font-bold tracking-tight mb-8 text-cine-text">
@@ -43,6 +43,16 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="w-full px-6 md:px-12 z-50 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-cine-muted pb-8 sm:pb-6 mt-8 relative">
+        <div className="bg-cine-accent/10 border border-cine-accent/30 text-cine-accent px-4 py-2 rounded-full backdrop-blur-sm shadow-lg">
+          Demo Mode Active
+        </div>
+        <div className="backdrop-blur-sm px-4 py-2 rounded-full border border-cine-border/50 bg-cine-surface/30 shadow-lg">
+          Created with <span className="text-cine-accent mx-1 text-sm">♥</span> by <span className="text-cine-text ml-1">Dennis Xavier</span>
+        </div>
+      </footer>
     </div>
   );
 }
