@@ -49,10 +49,10 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
     : "shadow-[0_8px_30px_rgb(229,9,20,0.15)]";
 
   // Calculate dynamic grid columns based on layout
-  const maxCol = layoutSections.length > 0 
-    ? Math.max(...layoutSections.flatMap(s => s.rows.flatMap(r => r.seats.map(seat => seat.colStart)))) + 2 
+  const maxCol = layoutSections.length > 0
+    ? Math.max(...layoutSections.flatMap(s => s.rows.flatMap(r => r.seats.map(seat => seat.colStart)))) + 2
     : 17;
-    
+
   const gridStyle = { gridTemplateColumns: `2rem repeat(${maxCol}, minmax(0, 1fr))` };
 
   // Calculate dynamic optimal zone (middle ~40% of rows)
@@ -93,13 +93,13 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
         <div className="space-y-6">
           {/* Hero Image */}
           {screen.photoUrl && (
-            <div 
+            <div
               className="w-full h-[40vh] sm:h-[50vh] md:h-[60vh] rounded-3xl overflow-hidden relative shadow-2xl border border-cine-border group cursor-pointer"
               onClick={() => setIsModalOpen(true)}
             >
-              <img 
-                src={screen.photoUrl} 
-                alt={`${screen.auditorium} at ${screen.venue}`} 
+              <img
+                src={screen.photoUrl}
+                alt={`${screen.auditorium} at ${screen.venue}`}
                 className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-cine-surface via-transparent to-transparent opacity-60"></div>
@@ -115,7 +115,7 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
                 <div className="text-[10px] font-semibold uppercase tracking-[0.3em] mb-3 text-cine-muted">
                   CHAIN
                 </div>
-                <h2 className="font-display text-2xl sm:text-3xl font-medium tracking-wide text-cine-text">
+                <h2 className="font-display text-2xl sm:text-3xl font-medium tracking-wide text-cine-text break-words">
                   {screen.chain}
                 </h2>
               </div>
@@ -128,7 +128,7 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
                   <div className="text-[10px] font-semibold uppercase tracking-[0.3em] mb-3 text-white/70">
                     VENUE
                   </div>
-                  <h2 className="font-display text-2xl sm:text-3xl font-semibold tracking-wide">
+                  <h2 className="font-display text-2xl sm:text-3xl font-semibold tracking-wide break-words">
                     {screen.venue}
                   </h2>
                 </div>
@@ -154,11 +154,11 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
                     ))}
                   </div>
                 </div>
-                <h1 className="font-display text-6xl sm:text-7xl font-bold tracking-tight">
+                <h1 className="font-display text-6xl sm:text-7xl font-bold tracking-tight break-words">
                   {screen.auditorium}
                 </h1>
                 {screen.type && (
-                  <div className="mt-4 text-xs font-semibold uppercase tracking-widest text-cine-muted">
+                  <div className="mt-4 text-xs font-semibold uppercase tracking-widest text-cine-muted break-words">
                     {screen.type} • SEATING: {screen.seating}
                   </div>
                 )}
@@ -174,7 +174,7 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
                 <div className="text-[10px] font-semibold uppercase tracking-[0.3em] mb-4 text-cine-muted">
                   CANVAS DIMENSIONS
                 </div>
-                <h1 className="font-display text-5xl sm:text-[6rem] leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-cine-text to-cine-muted drop-shadow-lg mb-4">
+                <h1 className="font-display text-5xl sm:text-[6rem] leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-cine-text to-cine-muted drop-shadow-lg mb-4 break-words">
                   {screen.screenSize}
                 </h1>
               </div>
@@ -185,10 +185,10 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
                 <div className="text-[10px] font-semibold uppercase tracking-[0.3em] mb-3 text-cine-muted">
                   PROJECTION ENGINE
                 </div>
-                <h2 className="font-display text-3xl sm:text-4xl font-medium tracking-tight mb-2 text-cine-text">
+                <h2 className="font-display text-3xl sm:text-4xl font-medium tracking-tight mb-2 text-cine-text break-words">
                   {screen.projection}
                 </h2>
-                <div className="text-sm text-cine-muted font-light max-w-sm leading-relaxed">
+                <div className="text-sm text-cine-muted font-light max-w-sm leading-relaxed break-words">
                   {screen.projectionDesc}
                 </div>
               </div>
@@ -202,7 +202,7 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
                 >
                   FORMAT RATIO
                 </div>
-                <h2 className="font-display text-3xl sm:text-4xl font-medium tracking-tight text-cine-text">
+                <h2 className="font-display text-3xl sm:text-4xl font-medium tracking-tight text-cine-text break-words">
                   {screen.aspectRatio}
                 </h2>
               </div>
@@ -222,7 +222,7 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
                 </div>
                 <div>
                   <h2
-                    className="font-display text-4xl sm:text-5xl tracking-tight mb-2"
+                    className="font-display text-4xl sm:text-5xl tracking-tight mb-2 break-words"
                     style={{
                       color: accentColor,
                       textShadow: `0 0 10px ${accentColor}80`,
@@ -230,7 +230,7 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
                   >
                     {screen.audio.toUpperCase()}
                   </h2>
-                  <p className="font-light text-sm text-cine-muted max-w-md leading-relaxed mt-4">
+                  <p className="font-light text-sm text-cine-muted max-w-md leading-relaxed mt-4 break-words">
                     {screen.audioDesc}
                   </p>
                 </div>
@@ -267,9 +267,8 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
 
             {/* Overall Rating */}
             <div
-              className={`rounded-2xl bg-gradient-to-b ${
-                isBlue ? "from-[#0055FF] to-[#002f8f]" : "from-cine-accent to-[#7a040b]"
-              } p-8 md:p-10 flex flex-col justify-center items-center text-center shadow-[0_10px_40px_rgba(0,0,0,0.2)]`}
+              className={`rounded-2xl bg-gradient-to-b ${isBlue ? "from-[#0055FF] to-[#002f8f]" : "from-cine-accent to-[#7a040b]"
+                } p-8 md:p-10 flex flex-col justify-center items-center text-center shadow-[0_10px_40px_rgba(0,0,0,0.2)]`}
             >
               <div className="text-[10px] font-semibold uppercase tracking-[0.3em] mb-4 text-white/80">
                 OVERALL SCORE
@@ -346,30 +345,30 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
                       {(section.title ||
                         section.leftTitle ||
                         section.rightTitle) && (
-                        <div
-                          className="grid gap-1 sm:gap-1.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-cine-muted/80 mb-2 mt-4 items-end"
-                          style={gridStyle}
-                        >
-                          <div></div>
+                          <div
+                            className="grid gap-1 sm:gap-1.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-cine-muted/80 mb-2 mt-4 items-end"
+                            style={gridStyle}
+                          >
+                            <div></div>
 
-                          {section.title && (
-                            <div className="col-start-2 text-center border-b border-cine-border pb-2" style={{ gridColumnEnd: maxCol + 2 }}>
-                              {section.title}
-                            </div>
-                          )}
+                            {section.title && (
+                              <div className="col-start-2 text-center border-b border-cine-border pb-2" style={{ gridColumnEnd: maxCol + 2 }}>
+                                {section.title}
+                              </div>
+                            )}
 
-                          {section.leftTitle && section.rightTitle && (
-                            <>
-                              <div className="col-start-2 text-center border-b border-cine-border pb-2" style={{ gridColumnEnd: Math.floor(maxCol/2) + 1 }}>
-                                {section.leftTitle}
-                              </div>
-                              <div className="text-center border-b border-cine-border pb-2" style={{ gridColumnStart: Math.floor(maxCol/2) + 1, gridColumnEnd: maxCol + 2 }}>
-                                {section.rightTitle}
-                              </div>
-                            </>
-                          )}
-                        </div>
-                      )}
+                            {section.leftTitle && section.rightTitle && (
+                              <>
+                                <div className="col-start-2 text-center border-b border-cine-border pb-2" style={{ gridColumnEnd: Math.floor(maxCol / 2) + 1 }}>
+                                  {section.leftTitle}
+                                </div>
+                                <div className="text-center border-b border-cine-border pb-2" style={{ gridColumnStart: Math.floor(maxCol / 2) + 1, gridColumnEnd: maxCol + 2 }}>
+                                  {section.rightTitle}
+                                </div>
+                              </>
+                            )}
+                          </div>
+                        )}
 
                       {/* Rows */}
                       {section.rows.map((row) => {
@@ -382,60 +381,60 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
                         const leftmostCol = Math.min(...row.seats.map(s => s.colStart));
                         const labelDist = Math.abs(leftmostCol - centerCol);
                         const labelTranslateY = screen.isCurved ? (labelDist * labelDist * curveFactor) : 0;
-                        
+
                         return (
-                        <div
-                          key={row.rowLabel}
-                          className="grid gap-1 sm:gap-1.5 items-center"
-                          style={gridStyle}
-                        >
-                          <div 
-                            className="font-display text-[10px] sm:text-xs font-medium pr-2 sm:pr-4 text-right text-cine-muted"
-                            style={{ transform: `translateY(${labelTranslateY}px)` }}
+                          <div
+                            key={row.rowLabel}
+                            className="grid gap-1 sm:gap-1.5 items-center"
+                            style={gridStyle}
                           >
-                            {row.rowLabel}
-                          </div>
+                            <div
+                              className="font-display text-[10px] sm:text-xs font-medium pr-2 sm:pr-4 text-right text-cine-muted"
+                              style={{ transform: `translateY(${labelTranslateY}px)` }}
+                            >
+                              {row.rowLabel}
+                            </div>
 
-                          {row.seats.map((seat) => {
-                            // Define sweet spot dynamically based on center column and optimal rows
-                            const colSpread = Math.max(3, Math.floor(maxCol * 0.08));
-                            const isBest = Math.abs(seat.colStart - centerCol) <= colSpread && isOptimalRow;
+                            {row.seats.map((seat) => {
+                              // Define sweet spot dynamically based on center column and optimal rows
+                              const colSpread = Math.max(3, Math.floor(maxCol * 0.08));
+                              const isBest = Math.abs(seat.colStart - centerCol) <= colSpread && isOptimalRow;
 
-                            // Calculate mathematical curve
-                            const dist = Math.abs(seat.colStart - centerCol);
-                            const translateY = screen.isCurved ? (dist * dist * curveFactor) : 0;
+                              // Calculate mathematical curve
+                              const dist = Math.abs(seat.colStart - centerCol);
+                              const translateY = screen.isCurved ? (dist * dist * curveFactor) : 0;
 
-                            let seatClass =
-                              "w-6 h-6 sm:w-7 sm:h-7 rounded-t-lg rounded-b-sm flex items-center justify-center text-[8px] sm:text-[9px] font-medium transition-all duration-300 cursor-pointer shadow-sm ";
+                              let seatClass =
+                                "w-6 h-6 sm:w-7 sm:h-7 rounded-t-lg rounded-b-sm flex items-center justify-center text-[8px] sm:text-[9px] font-medium transition-all duration-300 cursor-pointer shadow-sm ";
 
-                            if (isBest) {
-                              seatClass +=
-                                " bg-gradient-to-br from-cine-accent to-[#b3070f] text-white shadow-[0_4px_12px_rgba(229,9,20,0.4)] border border-red-400/30 hover:scale-110 hover:-translate-y-1 z-10 glow-accent-hover";
-                            } else {
-                              seatClass +=
-                                " bg-[#1a1a1a] border border-[#333] text-cine-muted hover:text-cine-text hover:bg-[#2a2a2a] hover:border-[#555] hover:scale-110 hover:-translate-y-1 z-10";
-                            }
+                              if (isBest) {
+                                seatClass +=
+                                  " bg-gradient-to-br from-cine-accent to-[#b3070f] text-white shadow-[0_4px_12px_rgba(229,9,20,0.4)] border border-red-400/30 hover:scale-110 hover:-translate-y-1 z-10 glow-accent-hover";
+                              } else {
+                                seatClass +=
+                                  " bg-[#1a1a1a] border border-[#333] text-cine-muted hover:text-cine-text hover:bg-[#2a2a2a] hover:border-[#555] hover:scale-110 hover:-translate-y-1 z-10";
+                              }
 
-                            // If hovering, we counteract the translateY slightly for the pop effect, 
-                            // but CSS transforms overwrite each other. We can wrap the seat in a div for the curve,
-                            // or combine the transforms. Let's combine them in inline styles for the hover effect via CSS,
-                            // or just apply the curve to a wrapper!
-                            
-                            return (
-                              <div
-                                key={seat.id}
-                                style={{ 
-                                  gridColumnStart: seat.colStart + 1,
-                                  transform: `translateY(${translateY}px)` 
-                                }}
-                              >
-                                <div className={seatClass}>
-                                  {seat.label}
+                              // If hovering, we counteract the translateY slightly for the pop effect, 
+                              // but CSS transforms overwrite each other. We can wrap the seat in a div for the curve,
+                              // or combine the transforms. Let's combine them in inline styles for the hover effect via CSS,
+                              // or just apply the curve to a wrapper!
+
+                              return (
+                                <div
+                                  key={seat.id}
+                                  style={{
+                                    gridColumnStart: seat.colStart + 1,
+                                    transform: `translateY(${translateY}px)`
+                                  }}
+                                >
+                                  <div className={seatClass}>
+                                    {seat.label}
+                                  </div>
                                 </div>
-                              </div>
-                            );
-                          })}
-                        </div>
+                              );
+                            })}
+                          </div>
                         );
                       })}
                     </div>
@@ -461,17 +460,17 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
       </main>
       {/* Full-Screen Image Modal */}
       {isModalOpen && screen.photoUrl && (
-        <div 
+        <div
           className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out animate-in fade-in duration-300"
           onClick={() => setIsModalOpen(false)}
         >
-          <img 
-            src={screen.photoUrl} 
-            alt={`${screen.auditorium} at ${screen.venue}`} 
+          <img
+            src={screen.photoUrl}
+            alt={`${screen.auditorium} at ${screen.venue}`}
             className="max-w-full max-h-full rounded-lg object-contain shadow-2xl ring-1 ring-white/20 animate-in zoom-in-95 duration-300"
           />
-          
-          <button 
+
+          <button
             className="absolute top-6 right-6 w-12 h-12 flex items-center justify-center rounded-full bg-black/50 text-white hover:bg-white hover:text-black transition-colors duration-300 border border-white/20"
             onClick={(e) => { e.stopPropagation(); setIsModalOpen(false); }}
           >

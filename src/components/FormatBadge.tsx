@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-export type FormatType = 'imax' | 'dolby' | 'premium';
+export type FormatType = 'imax' | 'dolby' | 'premium' | "dolby-atmos";
 
 interface FormatBadgeProps {
   format: FormatType;
@@ -18,6 +18,12 @@ export function FormatBadge({ format, label }: FormatBadgeProps) {
         </span>
       );
     case 'dolby':
+      return (
+        <span className="inline-flex items-center justify-center bg-black text-white px-3 py-1 rounded shadow-sm font-medium tracking-wide text-sm border border-white/10">
+          {label || 'Dolby Atmos'}
+        </span>
+      );
+    case 'dolby-atmos':
       return (
         <span className="inline-flex items-center justify-center bg-black text-white px-3 py-1 rounded shadow-sm font-medium tracking-wide text-sm border border-white/10">
           {label || 'Dolby Atmos'}
