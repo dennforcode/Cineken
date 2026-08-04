@@ -64,100 +64,65 @@ export const layouts: Record<string, SectionConfig[]> = {
   ],
   "prasads": [
     {
-      title: "GOLD",
+      title: "GOLD + 3D Glass",
       rows: [
-        generateRow("N", [{ startCol: 1, startNum: 1, count: 47 }]),
-        generateRow("M", [{ startCol: 1, startNum: 1, count: 47 }]),
-        generateRow("L", [{ startCol: 1, startNum: 1, count: 47 }]),
-        generateRow("K", [{ startCol: 1, startNum: 1, count: 47 }]),
-        generateRow("J", [{ startCol: 1, startNum: 1, count: 47 }]),
-        generateRow("I", [{ startCol: 1, startNum: 1, count: 47 }]),
-        generateRow("H", [{ startCol: 1, startNum: 1, count: 47 }]),
-        generateRow("G", [{ startCol: 1, startNum: 1, count: 47 }]),
-        generateRow("F", [{ startCol: 1, startNum: 1, count: 47 }]),
-        generateRow("E", [{ startCol: 1, startNum: 1, count: 47 }]),
+        generateRow("N", [{ startCol: 1, startNum: 47, count: 47, step: -1 }]),
+        generateRow("M", [{ startCol: 1, startNum: 47, count: 47, step: -1 }]),
+        generateRow("L", [{ startCol: 1, startNum: 47, count: 47, step: -1 }]),
+        generateRow("K", [{ startCol: 1, startNum: 47, count: 47, step: -1 }]),
+        generateRow("J", [{ startCol: 1, startNum: 47, count: 47, step: -1 }]),
+        generateRow("I", [{ startCol: 1, startNum: 47, count: 47, step: -1 }]),
+        generateRow("H", [{ startCol: 1, startNum: 47, count: 47, step: -1 }]),
+        generateRow("G", [{ startCol: 1, startNum: 47, count: 47, step: -1 }]),
+        generateRow("F", [{ startCol: 1, startNum: 47, count: 47, step: -1 }]),
+        generateRow("E", [{ startCol: 1, startNum: 47, count: 47, step: -1 }]),
+        generateRow("D", [{ startCol: 2, startNum: 45, count: 45, step: -1 }]),
+        generateRow("C", [{ startCol: 4, startNum: 41, count: 41, step: -1 }]),
+        generateRow("B", [{ startCol: 5, startNum: 39, count: 39, step: -1 }]),
+        generateRow("A", [{ startCol: 8, startNum: 34, count: 34, step: -1 }]),
       ],
-    },
-    {
-      title: "SILVER",
-      rows: [
-        generateRow("D", [{ startCol: 1, startNum: 45, count: 1 }]),
-        generateRow("C", [
-          { startCol: 2, startNum: 40, count: 2 },
-          { startCol: 6, startNum: 37, count: 2 },
-          { startCol: 40, startNum: 3, count: 3, step: -1 },
-        ]),
-        generateRow("B", [
-          { startCol: 4, startNum: 38, count: 11, step: -1 },
-          { startCol: 17, startNum: 27, count: 6, step: -1 },
-          { startCol: 26, startNum: 15, count: 1 },
-          { startCol: 31, startNum: 12, count: 12, step: -1 },
-        ]),
-        generateRow("A", [
-          { startCol: 7, startNum: 34, count: 16, step: -1 },
-          { startCol: 25, startNum: 18, count: 18, step: -1 },
-        ]),
-      ],
-    },
+    }
   ],
   "wadala": [
     {
       title: "SOFA",
       rows: [
         generateRow("A", [
-          { startCol: 1, startNum: 1, count: 2 },
-          { startCol: 24, startNum: 3, count: 2 },
+          { startCol: 12, startNum: 1, count: 2 },
+          { startCol: 32, startNum: 3, count: 2 },
         ]),
-        generateRow("B", [
-          { startCol: 3, startNum: 1, count: 10 },
-          { startCol: 15, startNum: 13, count: 10 },
-        ]),
-        generateRow("C", [{ startCol: 4, startNum: 1, count: 20 }]),
-        generateRow("D", [
-          { startCol: 5, startNum: 1, count: 11 },
-          { startCol: 19, startNum: 14, count: 7 },
-        ]),
-        generateRow("E", [
-          { startCol: 1, startNum: 1, count: 12 },
-          { startCol: 20, startNum: 19, count: 14 },
-        ]),
+        generateRow("B", [{ startCol: 12, startNum: 1, count: 22 }]),
+        generateRow("C", [{ startCol: 13, startNum: 1, count: 21 }]),
+        generateRow("D", [{ startCol: 14, startNum: 1, count: 20 }]),
+        generateRow("E", [{ startCol: 8, startNum: 1, count: 32 }]),
       ],
     },
     {
       title: "EXECUTIVE",
       rows: [
         generateRow("F", [
-          { startCol: 2, startNum: 1, count: 13 },
-          { startCol: 24, startNum: 23, count: 16 },
+          { startCol: 6, startNum: 1, count: 18 },
+          { startCol: 27, startNum: 19, count: 18 },
         ]),
         generateRow("G", [
-          { startCol: 1, startNum: 1, count: 17 },
-          { startCol: 23, startNum: 23, count: 16 },
+          { startCol: 5, startNum: 1, count: 19 },
+          { startCol: 27, startNum: 20, count: 19 },
         ]),
-        generateRow("H", [
-          { startCol: 0, startNum: 1, count: 19 },
-          { startCol: 21, startNum: 29, count: 18 },
-        ]),
-        generateRow("I", [
-          { startCol: 1, startNum: 1, count: 21 },
-          { startCol: 20, startNum: 24, count: 20 },
-        ]),
-        generateRow("J", [
-          { startCol: 2, startNum: 1, count: 23 },
-          { startCol: 20, startNum: 24, count: 17 },
-        ]),
+        generateRow("H", [{ startCol: 1, startNum: 1, count: 46 }]),
+        generateRow("I", [{ startCol: 3, startNum: 1, count: 43 }]),
+        generateRow("J", [{ startCol: 3, startNum: 1, count: 40 }]),
       ],
     },
     {
       title: "RECLINER IMAX",
-      rows: [generateRow("K", [{ startCol: 9, startNum: 1, count: 20 }])],
+      rows: [generateRow("K", [{ startCol: 14, startNum: 1, count: 20 }])],
     },
     {
       title: "LOUNGER",
-      rows: [generateRow("L", [{ startCol: 9, startNum: 1, count: 20 }])],
+      rows: [generateRow("L", [{ startCol: 14, startNum: 1, count: 20 }])],
     },
   ],
-  "pvr-eva-audi-3": [
+  "pvr-eva-audi-1": [
     {
       title: "RECLINER ROWS",
       rows: [
@@ -235,6 +200,149 @@ export const layouts: Record<string, SectionConfig[]> = {
         generateRow("A", [
           { startCol: 1, startNum: 1, count: 16 },
           { startCol: 19, startNum: 18, count: 4 },
+        ]),
+      ],
+    },
+  ],
+  "pvr-eva-audi-3": [
+    {
+      title: "Recliner Rows",
+      rows: [
+        generateRow("M", [{ startCol: 5, startNum: 1, count: 14 }]),
+      ],
+    },
+    {
+      title: "Prime Plus Rows",
+      rows: [
+        generateRow("L", [
+          { startCol: 1, startNum: 1, count: 11 },
+          { startCol: 13, startNum: 12, count: 10 }
+        ]),
+        generateRow("K", [
+          { startCol: 1, startNum: 1, count: 11 },
+          { startCol: 13, startNum: 12, count: 10 }
+        ]),
+        generateRow("J", [
+          { startCol: 1, startNum: 1, count: 11 },
+          { startCol: 13, startNum: 12, count: 10 }
+        ]),
+        generateRow("H", [
+          { startCol: 1, startNum: 1, count: 11 },
+          { startCol: 13, startNum: 12, count: 10 }
+        ]),
+        generateRow("G", [
+          { startCol: 1, startNum: 1, count: 11 },
+          { startCol: 13, startNum: 12, count: 10 }
+        ]),
+      ],
+    },
+    {
+      title: "Prime Rows",
+      rows: [
+        generateRow("F", [
+          { startCol: 1, startNum: 1, count: 11 },
+          { startCol: 13, startNum: 12, count: 10 }
+        ]),
+        generateRow("E", [
+          { startCol: 1, startNum: 1, count: 11 },
+          { startCol: 13, startNum: 12, count: 10 }
+        ]),
+        generateRow("D", [
+          { startCol: 1, startNum: 1, count: 11 },
+          { startCol: 13, startNum: 12, count: 10 }
+        ]),
+      ],
+    },
+    {
+      title: "Classic Rows",
+      rows: [
+        generateRow("C", [
+          { startCol: 1, startNum: 1, count: 11 },
+          { startCol: 13, startNum: 12, count: 10 }
+        ]),
+        generateRow("B", [
+          { startCol: 1, startNum: 1, count: 11 },
+          { startCol: 13, startNum: 12, count: 10 }
+        ]),
+        generateRow("A", [
+          { startCol: 1, startNum: 1, count: 11 },
+          { startCol: 13, startNum: 12, count: 10 }
+        ]),
+      ],
+    },
+
+  ],
+  "pvr-inox-megaplex-screenx": [
+    {
+      title: "Prime Plus Rows",
+      rows: [
+        generateRow("A", [
+          { startCol: 1, startNum: 1, count: 25 },
+        ]),
+        generateRow("B", [
+          { startCol: 1, startNum: 1, count: 4 },
+          { startCol: 7, startNum: 7, count: 14 },
+          { startCol: 23, startNum: 23, count: 3 },
+        ]),
+        generateRow("C", [
+          { startCol: 1, startNum: 1, count: 4 },
+          { startCol: 7, startNum: 7, count: 14 },
+          { startCol: 23, startNum: 23, count: 3 },
+        ]),
+        generateRow("D", [
+          { startCol: 1, startNum: 1, count: 4 },
+          { startCol: 7, startNum: 7, count: 14 },
+          { startCol: 23, startNum: 23, count: 3 },
+        ]),
+        generateRow("E", [
+          { startCol: 1, startNum: 1, count: 4 },
+          { startCol: 7, startNum: 7, count: 14 },
+        ]),
+      ],
+    },
+    {
+      title: "Prime Rows",
+      rows: [
+        generateRow("F", [
+          { startCol: 1, startNum: 1, count: 4 },
+          { startCol: 7, startNum: 7, count: 14 },
+        ]),
+        generateRow("G", [
+          { startCol: 1, startNum: 1, count: 4 },
+          { startCol: 7, startNum: 7, count: 14 },
+        ]),
+        generateRow("H", [
+          { startCol: 1, startNum: 1, count: 4 },
+          { startCol: 7, startNum: 7, count: 14 },
+        ]),
+        generateRow("I", [
+          { startCol: 1, startNum: 1, count: 4 },
+          { startCol: 7, startNum: 7, count: 14 },
+        ]),
+        generateRow("J", [
+          { startCol: 1, startNum: 1, count: 4 },
+          { startCol: 7, startNum: 7, count: 14 },
+        ]),
+        generateRow("K", [
+          { startCol: 1, startNum: 1, count: 4 },
+          { startCol: 7, startNum: 7, count: 14 },
+        ]),
+      ],
+    },
+    {
+      title: "Classic Rows",
+      rows: [
+        generateRow("L", [
+          { startCol: 3, startNum: 1, count: 22 },
+        ]),
+        generateRow("M", [
+          { startCol: 3, startNum: 1, count: 22 },
+        ]),
+        generateRow("N", [
+          { startCol: 3, startNum: 1, count: 22 },
+        ]),
+        generateRow("O", [
+          { startCol: 3, startNum: 1, count: 22 },
         ]),
       ],
     },

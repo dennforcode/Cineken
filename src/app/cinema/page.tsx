@@ -1,6 +1,6 @@
 import Link from "next/link";
 import screensData from "@/data/screens.json";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { Navbar } from "@/components/Navbar";
 import { FormatBadge } from "@/components/FormatBadge";
 import "./cinema.css";
 
@@ -10,17 +10,7 @@ export default function CinemaDirectory() {
       <div className="fixed top-0 inset-x-0 h-96 bg-gradient-to-b from-cine-accent/5 to-transparent pointer-events-none -z-10"></div>
       
       {/* Header */}
-      <header className="sticky top-0 z-50 flex justify-between items-center px-6 py-4 glass-panel uppercase text-xs font-semibold tracking-[0.2em] text-cine-text shadow-lg shadow-black/5">
-        <Link href="/" className="flex items-center gap-3 hover:text-cine-accent transition-colors duration-300">
-          <div className="w-6 h-6 rounded-full border border-cine-border flex items-center justify-center bg-cine-surface">
-            <span className="text-[10px] leading-none mb-px">←</span>
-          </div>
-          <div className="tracking-[0.3em]">CINEKEN</div>
-        </Link>
-        <div className="flex items-center gap-6">
-          <ThemeToggle />
-        </div>
-      </header>
+      <Navbar />
 
       <main className="max-w-[1200px] mx-auto px-4 md:px-8 py-16">
         <div className="mb-16">

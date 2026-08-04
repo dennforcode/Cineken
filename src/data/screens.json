@@ -44,7 +44,7 @@
     "audioDesc": "Floor-to-ceiling spatial audio array with zero-decibel noise floor isolation.",
     "seating": "Approx. 630",
     "type": "Premium Large Format",
-    "isCurved": true,
+    "isCurved": false,
     "photoUrl": "/cinemas/prasad_pcx.png",
     "ratings": {
       "visual": "10.0",
@@ -55,6 +55,35 @@
     },
     "certification": "REFERENCE PREMIUM",
     "colorTheme": "red"
+  },
+  {
+    "id": "pvr-inox-megaplex-screenx",
+    "chain": "PVR INOX",
+    "venue": "Inorbit Mall, Malad, Mumbai",
+    "auditorium": "ScreenX",
+    "badges": [
+      "screenx",
+      "dolby-atmos"
+    ],
+    "screenSize": "Approx. 62 × 32 ft",
+    "aspectRatio": "2.39:1 (270° ScreenX)",
+    "projection": "Triple Barco 4K Digital",
+    "projectionDesc": "Three synchronized 4K projectors expand supported films across the front and side walls for a 270° immersive experience.",
+    "audio": "Dolby Atmos",
+    "audioDesc": "Object-based immersive surround sound with ceiling-mounted speakers engineered for large-format presentations.",
+    "seating": "Approx. 300",
+    "type": "ScreenX Premium Large Format",
+    "isCurved": false,
+    "photoUrl": "/cinemas/screenx_malad.png",
+    "ratings": {
+      "visual": "9.6",
+      "audio": "9.5",
+      "thirdLabel": "IMMERSION",
+      "thirdScore": "10.0",
+      "overall": "9.6"
+    },
+    "certification": "SCREENX EXPERIENCE",
+    "colorTheme": "purple"
   },
   {
     "id": "wadala",

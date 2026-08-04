@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ThemeToggle } from "./ThemeToggle";
+import { Navbar } from "./Navbar";
 import { FormatBadge } from "./FormatBadge";
 import "../app/cinema/cinema.css";
 
@@ -67,27 +67,7 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
       <div className="fixed top-0 inset-x-0 h-96 bg-gradient-to-b from-cine-accent/5 to-transparent pointer-events-none -z-10"></div>
 
       {/* Header */}
-      <header className="sticky top-0 z-50 flex justify-between items-center px-6 py-4 glass-panel uppercase text-xs font-semibold tracking-[0.2em] text-cine-text shadow-lg shadow-black/5">
-        <Link
-          href="/cinema"
-          className="flex items-center gap-3 hover:text-cine-accent transition-colors duration-300"
-        >
-          <div className="w-6 h-6 rounded-full border border-cine-border flex items-center justify-center bg-cine-surface">
-            <span className="text-[10px] leading-none mb-px">←</span>
-          </div>
-          <div className="tracking-[0.3em]">ALL SCREENS</div>
-        </Link>
-        <div className="flex items-center gap-6">
-          <div className="hidden sm:block text-cine-muted font-light">
-            • LEGENDARY SCREENS
-          </div>
-          <ThemeToggle />
-          <div className="flex flex-col gap-[4px] w-6 cursor-pointer group">
-            <div className="h-[2px] w-full bg-cine-text rounded-full group-hover:bg-cine-accent transition-colors"></div>
-            <div className="h-[2px] w-2/3 bg-cine-text rounded-full self-end group-hover:bg-cine-accent transition-colors"></div>
-          </div>
-        </div>
-      </header>
+      <Navbar backHref="/cinema" backText="ALL SCREENS" showMenu={true} />
 
       <main className="max-w-[1400px] mx-auto px-4 md:px-8 py-16 space-y-32">
         <div className="space-y-6">

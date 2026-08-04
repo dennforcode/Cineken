@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ThemeToggle } from "../components/ThemeToggle";
+import { Navbar } from "../components/Navbar";
 import "./cinema/cinema.css";
 
 export default function Home() {
@@ -9,9 +9,7 @@ export default function Home() {
     <div className="premium-body selection:bg-cine-accent selection:text-white min-h-screen relative overflow-x-hidden flex flex-col">
 
       {/* Header with Theme Toggle */}
-      <header className="absolute top-0 right-0 p-6 md:p-8 z-50">
-        <ThemeToggle />
-      </header>
+      <Navbar transparent={true} hideLogoAndText={true} />
 
       {/* Background Ambient Glow */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-cine-accent/10 rounded-full blur-[120px] pointer-events-none"></div>
@@ -21,9 +19,12 @@ export default function Home() {
       <section className="px-6 md:px-12 py-24 flex-grow flex flex-col justify-center relative z-10">
         <div className="max-w-5xl mx-auto w-full">
 
-          <h1 className="font-display text-5xl sm:text-7xl md:text-[6rem] leading-[1.1] font-bold tracking-tight mb-8 text-cine-text">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cine-text to-cine-muted">CINE</span>KEN
-          </h1>
+          <div className="flex items-center gap-6 mb-8">
+            <img src="/Logo.png" alt="Cineken Logo" className="h-24 md:h-32 object-contain drop-shadow-2xl" />
+            <h1 className="font-display text-5xl sm:text-7xl md:text-[6rem] leading-[1.1] font-bold tracking-tight text-cine-text">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cine-text to-cine-muted">CINE</span>KEN
+            </h1>
+          </div>
 
           <p className="font-sans text-lg md:text-xl text-cine-muted max-w-3xl leading-relaxed mt-8 font-light">
             This platform is a demonstration of a highly interactive, state-of-the-art cinema seating and booking interface. Built with an uncompromising premium cinematic aesthetic, it prioritizes sleek typography, subtle glows, and deep contrasts. Explore the topography matrix to find your optimal acoustic sweet spot.
