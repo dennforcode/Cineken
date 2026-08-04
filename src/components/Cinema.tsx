@@ -34,6 +34,7 @@ export type ScreenData = {
 };
 
 import { SectionConfig } from "@/data/layouts";
+import { FormatLogoBadge } from "./FormatLogoBadge";
 
 export default function CinemaComponent({ screen, layoutSections }: { screen: ScreenData, layoutSections: SectionConfig[] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -247,7 +248,11 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
 
             {/* Overall Rating */}
             <div
-              className={`rounded-2xl bg-gradient-to-b ${isBlue ? "from-[#0055FF] to-[#002f8f]" : "from-cine-accent to-[#7a040b]"
+              className={`rounded-2xl bg-gradient-to-b ${Number(screen.ratings.overall) >= 8.6
+                ? "from-emerald-500 to-green-800"
+                : Number(screen.ratings.overall) >= 7.0
+                  ? "from-amber-500 to-yellow-700"
+                  : "from-rose-600 to-red-900"
                 } p-8 md:p-10 flex flex-col justify-center items-center text-center shadow-[0_10px_40px_rgba(0,0,0,0.2)]`}
             >
               <div className="text-[10px] font-semibold uppercase tracking-[0.3em] mb-4 text-white/80">
