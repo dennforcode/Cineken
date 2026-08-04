@@ -11,9 +11,9 @@ export default function Home() {
       {/* Header with Theme Toggle */}
       <Navbar transparent={true} hideLogoAndText={true} />
 
-      {/* Background Ambient Glow */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-cine-accent/10 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 right-1/4 w-[600px] h-[400px] bg-cine-accent/5 rounded-full blur-[150px] pointer-events-none"></div>
+      {/* Background Ambient Glow (Hidden on mobile due to heavy GPU blur rendering) */}
+      <div className="hidden md:block absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-cine-accent/10 rounded-full blur-[120px] pointer-events-none transform-gpu"></div>
+      <div className="hidden md:block absolute bottom-0 right-1/4 w-[600px] h-[400px] bg-cine-accent/5 rounded-full blur-[150px] pointer-events-none transform-gpu"></div>
 
       {/* Introduction Section */}
       <section className="px-6 md:px-12 py-24 flex-grow flex flex-col justify-center relative z-10">

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navbar } from "./Navbar";
 import { FormatBadge } from "./FormatBadge";
 import "../app/cinema/cinema.css";
@@ -38,6 +38,13 @@ import { FormatLogoBadge } from "./FormatLogoBadge";
 
 export default function CinemaComponent({ screen, layoutSections }: { screen: ScreenData, layoutSections: SectionConfig[] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showSeats, setShowSeats] = useState(false);
+
+  // Defer heavy seat rendering to unblock initial page load on mobile
+  useEffect(() => {
+    const timer = setTimeout(() => setShowSeats(true), 150);
+    return () => clearTimeout(timer);
+  }, []);
   const isBlue = screen.colorTheme === "blue";
   const accentColor = isBlue ? "#0055FF" : "#E50914";
   const glowClass = isBlue ? "bg-[#0055FF]" : "bg-[#E50914]";
@@ -119,7 +126,7 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
             {/* Audi */}
             <div className="rounded-2xl glass-panel p-8 md:p-12 flex flex-col justify-center text-cine-text shadow-xl relative overflow-hidden">
               <div
-                className={`absolute -bottom-24 -right-24 w-64 h-64 ${glowClass}/10 rounded-full blur-[80px]`}
+                className={`hidden md:block absolute -bottom-24 -right-24 w-64 h-64 ${glowClass}/10 rounded-full blur-[80px] transform-gpu`}
               ></div>
               <div className="relative z-10">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
@@ -150,7 +157,10 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
           {/* Spec-Driven Hero Section */}
           <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="rounded-2xl bg-cine-surface border border-cine-border p-8 md:p-16 flex flex-col justify-center min-h-[30vh] transition-all hover:border-cine-text/10 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-tr from-cine-text/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-cine-text/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div
+                className={`hidden md:block absolute right-0 top-0 w-32 h-full ${glowClass}/0 blur-[0px] transform-gpu`}
+              ></div>
               <div className="relative z-10">
                 <div className="text-[10px] font-semibold uppercase tracking-[0.3em] mb-4 text-cine-muted">
                   CANVAS DIMENSIONS
@@ -284,7 +294,7 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
               </div>
 
               <div className="p-8 rounded-2xl bg-cine-surface border border-cine-border relative overflow-hidden group shadow-sm">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-cine-accent/5 rounded-full blur-[40px] group-hover:bg-cine-accent/10 transition-all duration-700"></div>
+                <div className="hidden md:block absolute top-0 right-0 w-32 h-32 bg-cine-accent/5 rounded-full blur-[40px] group-hover:bg-cine-accent/10 transition-all duration-700 transform-gpu"></div>
                 <h3 className="font-sans text-xs font-semibold uppercase tracking-[0.3em] mb-6 text-cine-accent relative z-10">
                   OPTIMAL ZONE
                 </h3>
@@ -321,109 +331,113 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
             </div>
 
             <div className="xl:col-span-8 w-full bg-cine-surface p-8 md:p-12 rounded-3xl border border-cine-border shadow-lg relative overflow-hidden">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[300px] bg-cine-accent/5 blur-[100px] pointer-events-none"></div>
+              <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[300px] bg-cine-accent/5 blur-[100px] pointer-events-none transform-gpu"></div>
               <div className="w-full overflow-x-auto pb-12 hide-scrollbar">
                 <div className="flex flex-col gap-3 sm:gap-4 min-w-max mx-auto px-4 relative z-10">
-                  {layoutSections.map((section, sIdx) => (
-                    <div key={sIdx} className="flex flex-col gap-1.5 sm:gap-2">
-                      {/* Section Headers */}
-                      {(section.title ||
-                        section.leftTitle ||
-                        section.rightTitle) && (
-                          <div
-                            className="grid gap-1 sm:gap-1.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-cine-muted/80 mb-2 mt-4 items-end"
-                            style={gridStyle}
-                          >
-                            <div></div>
-
-                            {section.title && (
-                              <div className="col-start-2 text-center border-b border-cine-border pb-2" style={{ gridColumnEnd: maxCol + 2 }}>
-                                {section.title}
-                              </div>
-                            )}
-
-                            {section.leftTitle && section.rightTitle && (
-                              <>
-                                <div className="col-start-2 text-center border-b border-cine-border pb-2" style={{ gridColumnEnd: Math.floor(maxCol / 2) + 1 }}>
-                                  {section.leftTitle}
-                                </div>
-                                <div className="text-center border-b border-cine-border pb-2" style={{ gridColumnStart: Math.floor(maxCol / 2) + 1, gridColumnEnd: maxCol + 2 }}>
-                                  {section.rightTitle}
-                                </div>
-                              </>
-                            )}
-                          </div>
-                        )}
-
-                      {/* Rows */}
-                      {section.rows.map((row) => {
-                        const isOptimalRow = currentRowGlobalIndex >= optimalRowStart && currentRowGlobalIndex <= optimalRowEnd;
-                        currentRowGlobalIndex++;
-
-                        // Calculate row label offset to match the leftmost seat's curve
-                        const centerCol = Math.floor(maxCol / 2);
-                        const curveFactor = 0.08;
-                        const leftmostCol = Math.min(...row.seats.map(s => s.colStart));
-                        const labelDist = Math.abs(leftmostCol - centerCol);
-                        const labelTranslateY = screen.isCurved ? (labelDist * labelDist * curveFactor) : 0;
-
-                        return (
-                          <div
-                            key={row.rowLabel}
-                            className="grid gap-1 sm:gap-1.5 items-center"
-                            style={gridStyle}
-                          >
-                            <div
-                              className="font-display text-[10px] sm:text-xs font-medium pr-2 sm:pr-4 text-right text-cine-muted"
-                              style={{ transform: `translateY(${labelTranslateY}px)` }}
-                            >
-                              {row.rowLabel}
-                            </div>
-
-                            {row.seats.map((seat) => {
-                              // Define sweet spot dynamically based on center column and optimal rows
-                              const colSpread = Math.max(3, Math.floor(maxCol * 0.08));
-                              const isBest = Math.abs(seat.colStart - centerCol) <= colSpread && isOptimalRow;
-
-                              // Calculate mathematical curve
-                              const dist = Math.abs(seat.colStart - centerCol);
-                              const translateY = screen.isCurved ? (dist * dist * curveFactor) : 0;
-
-                              let seatClass =
-                                "w-6 h-6 sm:w-7 sm:h-7 rounded-t-lg rounded-b-sm flex items-center justify-center text-[8px] sm:text-[9px] font-medium transition-all duration-300 cursor-pointer shadow-sm ";
-
-                              if (isBest) {
-                                seatClass +=
-                                  " bg-gradient-to-br from-cine-accent to-[#b3070f] text-white shadow-[0_4px_12px_rgba(229,9,20,0.4)] border border-red-400/30 hover:scale-110 hover:-translate-y-1 z-10 glow-accent-hover";
-                              } else {
-                                seatClass +=
-                                  " bg-[#1a1a1a] border border-[#333] text-cine-muted hover:text-cine-text hover:bg-[#2a2a2a] hover:border-[#555] hover:scale-110 hover:-translate-y-1 z-10";
-                              }
-
-                              // If hovering, we counteract the translateY slightly for the pop effect, 
-                              // but CSS transforms overwrite each other. We can wrap the seat in a div for the curve,
-                              // or combine the transforms. Let's combine them in inline styles for the hover effect via CSS,
-                              // or just apply the curve to a wrapper!
-
-                              return (
-                                <div
-                                  key={seat.id}
-                                  style={{
-                                    gridColumnStart: seat.colStart + 1,
-                                    transform: `translateY(${translateY}px)`
-                                  }}
-                                >
-                                  <div className={seatClass}>
-                                    {seat.label}
-                                  </div>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        );
-                      })}
+                  {!showSeats ? (
+                    <div className="flex flex-col items-center justify-center h-64 opacity-50 animate-pulse">
+                      <div className="w-8 h-8 rounded-full border-2 border-cine-accent border-t-transparent animate-spin mb-4"></div>
+                      <div className="text-[10px] font-semibold uppercase tracking-[0.3em] text-cine-muted">
+                        LOADING TOPOGRAPHY...
+                      </div>
                     </div>
-                  ))}
+                  ) : (
+                    layoutSections.map((section, sIdx) => (
+                      <div key={sIdx} className="flex flex-col gap-1.5 sm:gap-2">
+                        {/* Section Headers */}
+                        {(section.title ||
+                          section.leftTitle ||
+                          section.rightTitle) && (
+                            <div
+                              className="grid gap-1 sm:gap-1.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-cine-muted/80 mb-2 mt-4 items-end"
+                              style={gridStyle}
+                            >
+                              <div></div>
+
+                              {section.title && (
+                                <div className="col-start-2 text-center border-b border-cine-border pb-2" style={{ gridColumnEnd: maxCol + 2 }}>
+                                  {section.title}
+                                </div>
+                              )}
+
+                              {section.leftTitle && section.rightTitle && (
+                                <>
+                                  <div className="col-start-2 text-center border-b border-cine-border pb-2" style={{ gridColumnEnd: Math.floor(maxCol / 2) + 1 }}>
+                                    {section.leftTitle}
+                                  </div>
+                                  <div className="text-center border-b border-cine-border pb-2" style={{ gridColumnStart: Math.floor(maxCol / 2) + 1, gridColumnEnd: maxCol + 2 }}>
+                                    {section.rightTitle}
+                                  </div>
+                                </>
+                              )}
+                            </div>
+                          )}
+
+                        {/* Rows */}
+                        {section.rows.map((row) => {
+                          const isOptimalRow = currentRowGlobalIndex >= optimalRowStart && currentRowGlobalIndex <= optimalRowEnd;
+                          currentRowGlobalIndex++;
+
+                          // Calculate row label offset to match the leftmost seat's curve
+                          const centerCol = Math.floor(maxCol / 2);
+                          const curveFactor = 0.08;
+                          const leftmostCol = Math.min(...row.seats.map(s => s.colStart));
+                          const labelDist = Math.abs(leftmostCol - centerCol);
+                          const labelTranslateY = screen.isCurved ? (labelDist * labelDist * curveFactor) : 0;
+
+                          return (
+                            <div
+                              key={row.rowLabel}
+                              className="grid gap-1 sm:gap-1.5 items-center"
+                              style={gridStyle}
+                            >
+                              <div
+                                className="font-display text-[10px] sm:text-xs font-medium pr-2 sm:pr-4 text-right text-cine-muted"
+                                style={{ transform: `translateY(${labelTranslateY}px)` }}
+                              >
+                                {row.rowLabel}
+                              </div>
+
+                              {row.seats.map((seat) => {
+                                // Define sweet spot dynamically based on center column and optimal rows
+                                const colSpread = Math.max(3, Math.floor(maxCol * 0.08));
+                                const isBest = Math.abs(seat.colStart - centerCol) <= colSpread && isOptimalRow;
+
+                                // Calculate mathematical curve
+                                const dist = Math.abs(seat.colStart - centerCol);
+                                const translateY = screen.isCurved ? (dist * dist * curveFactor) : 0;
+
+                                let seatClass =
+                                  "w-6 h-6 sm:w-7 sm:h-7 rounded-t-lg rounded-b-sm flex items-center justify-center text-[8px] sm:text-[9px] font-medium transition-all duration-300 cursor-pointer shadow-sm ";
+
+                                if (isBest) {
+                                  seatClass +=
+                                    " bg-gradient-to-br from-cine-accent to-[#b3070f] text-white shadow-[0_4px_12px_rgba(229,9,20,0.4)] border border-red-400/30 hover:scale-110 hover:-translate-y-1 z-10 glow-accent-hover";
+                                } else {
+                                  seatClass +=
+                                    " bg-[#1a1a1a] border border-[#333] text-cine-muted hover:text-cine-text hover:bg-[#2a2a2a] hover:border-[#555] hover:scale-110 hover:-translate-y-1 z-10";
+                                }
+
+                                return (
+                                  <div
+                                    key={seat.id}
+                                    style={{
+                                      gridColumnStart: seat.colStart + 1,
+                                      transform: `translateY(${translateY}px)`
+                                    }}
+                                  >
+                                    <div className={seatClass}>
+                                      {seat.label}
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ))
+                  )}
                 </div>
               </div>
 
