@@ -408,7 +408,7 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
                                 const translateY = screen.isCurved ? (dist * dist * curveFactor) : 0;
 
                                 let seatClass =
-                                  "w-6 h-6 sm:w-7 sm:h-7 rounded-t-lg rounded-b-sm flex items-center justify-center text-[8px] sm:text-[9px] font-medium transition-all duration-300 cursor-pointer shadow-sm ";
+                                  "countSeat w-6 h-6 sm:w-7 sm:h-7 rounded-t-lg rounded-b-sm flex items-center justify-center text-[8px] sm:text-[9px] font-medium transition-all duration-300 cursor-pointer shadow-sm ";
 
                                 if (isBest) {
                                   seatClass +=
