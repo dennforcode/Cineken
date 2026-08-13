@@ -7,35 +7,34 @@ export default async function NewTheaterPage() {
   const { data: chains } = await adminSupabase.from("chains").select("id, name").order("name");
 
   return (
-    <div className="max-w-2xl mx-auto space-y-6">
-      <div className="flex items-center gap-4 mb-8">
+    <div className="max-w-2xl space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <div className="flex items-center gap-4 mb-2">
         <Link
           href="/admin"
-          className="p-2 hover:bg-zinc-800 rounded-full transition-colors text-zinc-400 hover:text-white"
+          className="p-2 bg-zinc-900 border border-zinc-800/60 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors"
         >
-          <ArrowLeft className="w-5 h-5" />
+          <ArrowLeft className="w-4 h-4" />
         </Link>
         <div>
-          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-            <MapPin className="w-6 h-6 text-blue-500" />
+          <h2 className="text-2xl font-semibold text-zinc-100 flex items-center gap-2">
+            <MapPin className="w-5 h-5 text-zinc-400" />
             Add New Theater
           </h2>
-          <p className="text-zinc-400 text-sm">Register a new theater location.</p>
         </div>
       </div>
 
-      <form action={addTheater} className="bg-zinc-900 border border-zinc-800 rounded-xl p-6 space-y-6">
-        <div className="space-y-4">
-          <div>
-            <label htmlFor="chain_id" className="block text-sm font-medium text-zinc-300 mb-1">
-              Cinema Chain <span className="text-blue-500">*</span>
+      <form action={addTheater} className="bg-[#0a0a0a] border border-zinc-800/60 rounded-xl p-6 md:p-8 space-y-8">
+        <div className="space-y-6">
+          <div className="space-y-2">
+            <label htmlFor="chain_id" className="block text-sm font-medium text-zinc-300">
+              Cinema Chain <span className="text-zinc-500">*</span>
             </label>
             <select
               id="chain_id"
               name="chain_id"
               required
               defaultValue=""
-              className="w-full bg-zinc-950 border border-zinc-800 rounded-md px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all appearance-none"
+              className="w-full bg-[#050505] border border-zinc-800/60 rounded-md px-4 py-2.5 text-sm text-zinc-100 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-colors appearance-none"
             >
               <option value="" disabled>Select a chain...</option>
               {chains?.map(chain => (
@@ -44,9 +43,9 @@ export default async function NewTheaterPage() {
             </select>
           </div>
 
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-zinc-300 mb-1">
-              Theater Name <span className="text-blue-500">*</span>
+          <div className="space-y-2">
+            <label htmlFor="name" className="block text-sm font-medium text-zinc-300">
+              Theater Name <span className="text-zinc-500">*</span>
             </label>
             <input
               type="text"
@@ -54,14 +53,14 @@ export default async function NewTheaterPage() {
               name="name"
               required
               placeholder="e.g. AMC Empire 25"
-              className="w-full bg-zinc-950 border border-zinc-800 rounded-md px-4 py-2.5 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all"
+              className="w-full bg-[#050505] border border-zinc-800/60 rounded-md px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-colors"
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label htmlFor="city" className="block text-sm font-medium text-zinc-300 mb-1">
-                City <span className="text-blue-500">*</span>
+          <div className="grid grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <label htmlFor="city" className="block text-sm font-medium text-zinc-300">
+                City <span className="text-zinc-500">*</span>
               </label>
               <input
                 type="text"
@@ -69,13 +68,13 @@ export default async function NewTheaterPage() {
                 name="city"
                 required
                 placeholder="New York"
-                className="w-full bg-zinc-950 border border-zinc-800 rounded-md px-4 py-2.5 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all"
+                className="w-full bg-[#050505] border border-zinc-800/60 rounded-md px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-colors"
               />
             </div>
 
-            <div>
-              <label htmlFor="state" className="block text-sm font-medium text-zinc-300 mb-1">
-                State <span className="text-blue-500">*</span>
+            <div className="space-y-2">
+              <label htmlFor="state" className="block text-sm font-medium text-zinc-300">
+                State <span className="text-zinc-500">*</span>
               </label>
               <input
                 type="text"
@@ -83,13 +82,13 @@ export default async function NewTheaterPage() {
                 name="state"
                 required
                 placeholder="NY"
-                className="w-full bg-zinc-950 border border-zinc-800 rounded-md px-4 py-2.5 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all"
+                className="w-full bg-[#050505] border border-zinc-800/60 rounded-md px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-colors"
               />
             </div>
           </div>
 
-          <div>
-            <label htmlFor="address" className="block text-sm font-medium text-zinc-300 mb-1">
+          <div className="space-y-2">
+            <label htmlFor="address" className="block text-sm font-medium text-zinc-300">
               Address
             </label>
             <input
@@ -97,12 +96,12 @@ export default async function NewTheaterPage() {
               id="address"
               name="address"
               placeholder="234 W 42nd St"
-              className="w-full bg-zinc-950 border border-zinc-800 rounded-md px-4 py-2.5 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all"
+              className="w-full bg-[#050505] border border-zinc-800/60 rounded-md px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-colors"
             />
           </div>
 
-          <div>
-            <label htmlFor="website" className="block text-sm font-medium text-zinc-300 mb-1">
+          <div className="space-y-2">
+            <label htmlFor="website" className="block text-sm font-medium text-zinc-300">
               Website
             </label>
             <input
@@ -110,13 +109,13 @@ export default async function NewTheaterPage() {
               id="website"
               name="website"
               placeholder="https://..."
-              className="w-full bg-zinc-950 border border-zinc-800 rounded-md px-4 py-2.5 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all"
+              className="w-full bg-[#050505] border border-zinc-800/60 rounded-md px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-colors"
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label htmlFor="latitude" className="block text-sm font-medium text-zinc-300 mb-1">
+          <div className="grid grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <label htmlFor="latitude" className="block text-sm font-medium text-zinc-300">
                 Latitude
               </label>
               <input
@@ -125,12 +124,12 @@ export default async function NewTheaterPage() {
                 id="latitude"
                 name="latitude"
                 placeholder="40.756"
-                className="w-full bg-zinc-950 border border-zinc-800 rounded-md px-4 py-2.5 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all"
+                className="w-full bg-[#050505] border border-zinc-800/60 rounded-md px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-colors"
               />
             </div>
 
-            <div>
-              <label htmlFor="longitude" className="block text-sm font-medium text-zinc-300 mb-1">
+            <div className="space-y-2">
+              <label htmlFor="longitude" className="block text-sm font-medium text-zinc-300">
                 Longitude
               </label>
               <input
@@ -139,22 +138,22 @@ export default async function NewTheaterPage() {
                 id="longitude"
                 name="longitude"
                 placeholder="-73.988"
-                className="w-full bg-zinc-950 border border-zinc-800 rounded-md px-4 py-2.5 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all"
+                className="w-full bg-[#050505] border border-zinc-800/60 rounded-md px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-colors"
               />
             </div>
           </div>
         </div>
 
-        <div className="pt-4 flex justify-end gap-3 border-t border-zinc-800">
+        <div className="pt-6 flex justify-end gap-3 border-t border-zinc-800/60">
           <Link
             href="/admin"
-            className="px-4 py-2 text-sm font-medium text-zinc-300 hover:text-white transition-colors"
+            className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white bg-transparent hover:bg-zinc-900 rounded-md transition-colors border border-transparent"
           >
             Cancel
           </Link>
           <button
             type="submit"
-            className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition-colors shadow-lg shadow-blue-500/20"
+            className="px-4 py-2 bg-zinc-100 hover:bg-white text-zinc-950 text-sm font-medium rounded-md transition-colors"
           >
             Save Theater
           </button>

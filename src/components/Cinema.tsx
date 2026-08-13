@@ -12,7 +12,8 @@ export type ScreenData = {
   venue: string;
   auditorium: string;
   badges: string[];
-  screenSize: string;
+  screenWidth: string;
+  screenHeight: string;
   aspectRatio: string;
   projection: string;
   projectionDesc: string;
@@ -156,18 +157,78 @@ export default function CinemaComponent({ screen, layoutSections }: { screen: Sc
 
           {/* Spec-Driven Hero Section */}
           <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="rounded-2xl bg-cine-surface border border-cine-border p-8 md:p-16 flex flex-col justify-center min-h-[30vh] transition-all hover:border-cine-text/10 relative overflow-hidden group">
+            <div className="rounded-2xl bg-cine-surface border border-cine-border p-8 md:p-12 flex flex-col justify-center min-h-[30vh] transition-all hover:border-cine-text/10 relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-cine-text/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div
                 className={`hidden md:block absolute right-0 top-0 w-32 h-full ${glowClass}/0 blur-[0px] transform-gpu`}
               ></div>
-              <div className="relative z-10">
-                <div className="text-[10px] font-semibold uppercase tracking-[0.3em] mb-4 text-cine-muted">
-                  CANVAS DIMENSIONS
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="flex items-center justify-between mb-8">
+                  <div className="text-[10px] font-semibold uppercase tracking-[0.3em] text-cine-muted">
+                    CANVAS DIMENSIONS
+                  </div>
+                  <div className="text-[10px] font-semibold uppercase tracking-[0.3em] px-3 py-1 rounded-full border bg-opacity-10 backdrop-blur-sm" style={{ color: accentColor, borderColor: `${accentColor}40`, backgroundColor: `${accentColor}10` }}>
+                    {screen.aspectRatio}
+                  </div>
                 </div>
-                <h1 className="font-display text-5xl sm:text-[6rem] leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-cine-text to-cine-muted drop-shadow-lg mb-4 break-words">
-                  {screen.screenSize}
-                </h1>
+
+                {screen.screenWidth === 'Unknown' || screen.screenHeight === 'Unknown' ? (
+                  <h1 className="font-display text-5xl sm:text-[6rem] leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-cine-text to-cine-muted drop-shadow-lg mt-auto mb-auto break-words text-center">
+                    Unknown
+                  </h1>
+                ) : (
+                  <div className="flex-1 flex items-center justify-center w-full py-12 pl-12 pr-4 sm:pl-16 sm:pr-8">
+                    <div className="relative w-full max-w-[320px]">
+                      {/* Technical Drawing Screen Box */}
+                      <div 
+                        className="w-full rounded-lg border-2 border-cine-border bg-black/40 shadow-[0_0_40px_rgba(0,0,0,0.3)] overflow-hidden flex items-center justify-center relative transition-all duration-700 group-hover:shadow-[0_0_50px_rgba(255,255,255,0.05)]"
+                        style={{ 
+                          aspectRatio: `${parseFloat(screen.aspectRatio.split(':')[0]) || 2.39} / 1`, 
+                          borderColor: accentColor 
+                        }}
+                      >
+                        {/* Screen Glow */}
+                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-white/5 opacity-50"></div>
+                        <div className="absolute bottom-0 inset-x-0 h-1/2 bg-gradient-to-t from-white/5 to-transparent blur-md"></div>
+                        
+                        <div className="text-cine-muted/60 font-display text-2xl sm:text-3xl tracking-[0.2em] relative z-10 font-light mix-blend-screen">
+                          {screen.aspectRatio.split(' ')[0]}
+                        </div>
+                      </div>
+
+                      {/* Dimensions Annotations */}
+                      {/* Width Bracket (bottom) */}
+                      <div className="absolute -bottom-10 left-0 right-0 flex items-center gap-4 h-6">
+                        <div className="flex-1 flex items-center justify-start">
+                          <div className="w-[1px] h-3 bg-cine-muted/50"></div>
+                          <div className="h-[1px] w-full bg-cine-muted/50"></div>
+                        </div>
+                        <span className="font-display text-lg sm:text-xl text-cine-text tracking-wide whitespace-nowrap">
+                          {screen.screenWidth}
+                        </span>
+                        <div className="flex-1 flex items-center justify-end">
+                          <div className="h-[1px] w-full bg-cine-muted/50"></div>
+                          <div className="w-[1px] h-3 bg-cine-muted/50"></div>
+                        </div>
+                      </div>
+
+                      {/* Height Bracket (left) */}
+                      <div className="absolute -left-12 sm:-left-16 top-0 bottom-0 flex flex-col items-center justify-center gap-4 w-6">
+                        <div className="flex-1 flex flex-col items-center justify-start w-full">
+                          <div className="h-[1px] w-3 bg-cine-muted/50"></div>
+                          <div className="w-[1px] h-full bg-cine-muted/50"></div>
+                        </div>
+                        <span className="font-display text-lg sm:text-xl text-cine-text tracking-wide rotate-180 whitespace-nowrap" style={{ writingMode: 'vertical-rl' }}>
+                          {screen.screenHeight}
+                        </span>
+                        <div className="flex-1 flex flex-col items-center justify-end w-full">
+                          <div className="w-[1px] h-full bg-cine-muted/50"></div>
+                          <div className="h-[1px] w-3 bg-cine-muted/50"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 

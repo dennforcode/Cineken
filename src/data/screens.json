@@ -7,7 +7,8 @@
     "badges": [
       "imax"
     ],
-    "screenSize": "96 × 67 ft",
+    "screenWidth": "96 ft",
+    "screenHeight": "67 ft",
     "aspectRatio": "1.43:1",
     "projection": "IMAX 15/70 Film",
     "projectionDesc": "(IMAX GT) The gold standard of analog projection.",
@@ -36,7 +37,8 @@
       "premium",
       "dolby-atmos"
     ],
-    "screenSize": "98.6 × 46 ft",
+    "screenWidth": "98.6 ft",
+    "screenHeight": "46 ft",
     "aspectRatio": "1.85:1",
     "projection": "Dual Barco DP4K-60L",
     "projectionDesc": "RGB Laser delivering 60,000 lumens of absolute brilliance.",
@@ -65,7 +67,8 @@
       "screenx",
       "dolby-atmos"
     ],
-    "screenSize": "Approx. 62 × 32 ft",
+    "screenWidth": "Approx. 62 ft",
+    "screenHeight": "32 ft",
     "aspectRatio": "2.39:1 (270° ScreenX)",
     "projection": "Triple Barco 4K Digital",
     "projectionDesc": "Three synchronized 4K projectors expand supported films across the front and side walls for a 270° immersive experience.",
@@ -93,7 +96,8 @@
     "badges": [
       "imax"
     ],
-    "screenSize": "72 × 41 ft",
+    "screenWidth": "72 ft",
+    "screenHeight": "41 ft",
     "aspectRatio": "1.90:1",
     "projection": "IMAX XT Laser 4K",
     "projectionDesc": "Next-generation laser projection for incredibly sharp, bright images.",
@@ -121,8 +125,9 @@
     "badges": [
       "dolby-atmos"
     ],
-    "screenSize": "Unknown",
-    "aspectRatio": "2.39:1 (Estimated Scope Screen)",
+    "screenWidth": "35 ft",
+    "screenHeight": "14.64 ft",
+    "aspectRatio": "2.39:1 (Approx)",
     "projection": "Digital 2K Xenon",
     "projectionDesc": "Standard digital cinema projection. No public evidence of laser projection in Audi 3.",
     "audio": "Dolby Atmos",
